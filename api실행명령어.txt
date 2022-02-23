@@ -1,0 +1,3 @@
+export FLASK_APP="app.py"  # 리눅스 일때 <-
+set FLASK_APP=app.py # 윈도우 일때 <-
+flask run --host=0.0.0.0
