@@ -25,24 +25,24 @@ def upload_file():
 
 if __name__ == '__main__':
     #서버 실행
-   app.run(debug = True)
+   app.run(debug = True, host='0.0.0.0')
 
 #이 밑으로는 어떻게 사용해야할지 모름. 그리고 테스트용임.
 #   ****어쨋든 python 돌아간다****
-@app.route('/add', methods=['POST'])
-def get_add():
-    if request.method == 'POST':
-        a = request.json["a"]
-        b = request.json["b"]
-        c = add(a,b)
-        result = json.dumps(c)
-    return result, status.HTTP_200_OK, {"Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*"}
-
-@app.route('/same', methods=['POST'])
-def get_same():
-    if request.method == 'POST':
-        a = request.json["a"]
-        b = request.json["b"]
-        c = same(a,b)
-        result = json.dumps(c)
-    return result, status.HTTP_200_OK, {"Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*"}
+#@app.route('/add', methods=['POST'])
+# def get_add():
+#     if request.method == 'POST':
+#         a = request.json["a"]
+#         b = request.json["b"]
+#         c = add(a,b)
+#         result = json.dumps(c)
+#     return result, status.HTTP_200_OK, {"Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*"}
+#
+# @app.route('/same', methods=['POST'])
+# def get_same():
+#     if request.method == 'POST':
+#         a = request.json["a"]
+#         b = request.json["b"]
+#         c = same(a,b)
+#         result = json.dumps(c)
+#     return result, status.HTTP_200_OK, {"Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*"}
