@@ -55,11 +55,14 @@
       <div class="col-md-6 text-center">
         <div class="card text-dark mb-3" style="background-color:rgba(120,194,173,0.3);">
           <div class="card-body">
-            <h5 class="card-title mt-5 mb-3">영상 파일을 업로드하세요</h5>
-                <label class="btn btn-outline-dark text-center mb-5" for="my-file-selector">
-                    <input id="my-file-selector" type="file" class="d-none" accept=".mp4">
-                    파일선택 Browse
-                </label>
+            <h5 class="card-title mt-5 mb-5">영상 파일을 업로드하세요</h5>
+
+            <form action = "http://211.243.88.243:5000/fileUpload" method = "POST"
+               enctype = "multipart/form-data">
+               <input type = "file" name = "file" class="form-control mb-3"/>
+               <input type = "submit" value="확인" class="btn btn-outline-dark btn-sm" onclick="location.href='help.html'"/>
+            </form>
+
           </div>
         </div>
       </div>
@@ -97,22 +100,6 @@
     <button type="submit">테스트</button>
   </form>
 
-    <form action = "http://211.243.88.243:5000/fileUpload" method = "POST"
-       enctype = "multipart/form-data">
-       <label class="btn btn-outline-dark text-center mb-5" for="my-file-selector">
-           <input id="my-file-selector" type="file" class="d-none" accept=".mp4" name="file">
-           파일선택 Browse
-       </label>
-       <input type = "submit"/>
-    </form>
-
-    <form action = "http://211.243.88.243:5000/fileUpload" method = "POST"
-       enctype = "multipart/form-data">
-       <input type = "file" name = "file" />
-
-
-       <input type = "submit"/>
-    </form>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
