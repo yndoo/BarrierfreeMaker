@@ -5,13 +5,14 @@
     <!---반응형으로 디자인하기 위해 viewport를 설정--->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Barrierfree Maker</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--  <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
 
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="home.html">Barrierfree Maker</a>
+      <a class="navbar-brand" href="home">Barrierfree Maker</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -19,17 +20,17 @@
       <div class="navbar-collapse collapse" id="navbarColor01" style="">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="home.html">Home</a>
+            <a class="nav-link" href="home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="help.html">Help</a>
+            <a class="nav-link" href="help">Help</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="dev.html">Developers
+            <a class="nav-link active" href="dev">Developers
             <span class="visually-hidden">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about">About</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -46,7 +47,7 @@
   </div>
 
   <div class="container mt-2">
-    <img src="example/member.png" style="max-width:100%; height:auto;" class="mb-3" alt="예시2">
+    <img src="{{ url_for('static', filename='image/member.png') }}" style="max-width:100%; height:auto;" class="mb-3" alt="예시2">
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

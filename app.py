@@ -5,14 +5,42 @@ import json
 from script import *
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/home')
 def greeting():
-    return json.dumps(add(6,2))
+    return render_template('home.html')
+
+@app.route('/help')
+def gohelp():
+    return render_template('help.html')
+
+@app.route('/dev')
+def godev():
+    return render_template('dev.html')
+
+@app.route('/about')
+def goabout():
+    return render_template('about.html')
+
+@app.route('/loading')
+def goloading():
+    return render_template('loading.html')
+
+@app.route('/result')
+def goresult():
+    return render_template('result.html')
+
+@app.route('/addword',  methods = ['POST'])
+def addwords():
+    if request.method == 'POST':
+       value = request.form['id_words']
+       value = str(value)
+       #return value
+    return greeting()
 
 #업로드 HTML 렌더링
 @app.route('/upload')
 def render_file():
-   return render_template('home.html')
+   return json.dumps(add(6,2))
 
 #파일 업로드 처리
 @app.route('/fileUpload', methods = ['GET', 'POST'])
@@ -21,7 +49,7 @@ def upload_file():
       f = request.files['file']
       #저장할 경로 + 파일명
       f.save('./upload/'+secure_filename(f.filename))
-      return render_file()
+      return render_template('loading.html')
 
 if __name__ == '__main__':
     #서버 실행
