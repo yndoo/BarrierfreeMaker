@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request
 from flask_api import status
 from werkzeug.utils import secure_filename
+
+#소현언니 0518
+from pyannote.audio import Audio
+from pyannote.audio import Pipeline
+
 import json
 from script import *
 app = Flask(__name__)
@@ -37,6 +42,19 @@ def addwords():
        #return value
     return greeting()
 
+#소현언니 코드 0518
+@app.route('/speakerdiarization')
+def speaker_diarization(filename):
+    own_file ='./upload' + filename
+    OWN_FILE = {'audio': own_file}
+    waveform, sample_rate = Audio()(OWN_FILE)
+
+    pipeline = Pipeline.from_pretrained('pyannote/speaker-diarization')
+    diarization = pipeline(OWN_FILE)
+    with open('file.rttm', 'w') as file:
+            diarization.write_rttm(file)
+    return json.dumps(add(6,2))
+
 #업로드 HTML 렌더링
 @app.route('/upload')
 def render_file():
@@ -49,6 +67,7 @@ def upload_file():
       f = request.files['file']
       #저장할 경로 + 파일명
       f.save('./upload/'+secure_filename(f.filename))
+      speaker_diarization(f.filename)
       return render_template('loading.html')
 
 if __name__ == '__main__':
